@@ -131,3 +131,12 @@ payload:
   - IP-CIDR,91.105.192.0/23,no-resolve
   - IP-CIDR,91.108.20.0/22,no-resolve
   - IP-CIDR,185.76.151.0/24,no-resolve
+  - DOMAIN-KEYWORD,colab
+  - DOMAIN-KEYWORD,openai
+  - DOMAIN-KEYWORD,anthropic
+  - DOMAIN-KEYWORD,telegram
+  - DOMAIN-KEYWORD,twitter
+  - DOMAIN-KEYWORD,facebook
+  - DOMAIN-KEYWORD,instagram
+  - DOMAIN-KEYWORD,youtube
+  - DOMAIN-KEYWORD,google
