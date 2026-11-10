@@ -7,7 +7,7 @@ function main(config) {
   });
   config['rule-providers'] = config['rule-providers'] || {};
   var base = 'https://raw.githubusercontent.com/znhflyl/my-clash-rules/main/';
-  ['personal-direct', 'personal-proxy'].forEach(function(name) {
+  ['personal-direct', 'personal-proxy', 'personal-reject'].forEach(function(name) {
     config['rule-providers'][name] = {
       type: 'http', behavior: 'classical', format: 'yaml',
       url: base + name + '.yaml', path: './ruleset/' + name + '.yaml',
@@ -16,6 +16,7 @@ function main(config) {
   });
   config.rules = local.concat([
     'RULE-SET,personal-direct,DIRECT',
+    'RULE-SET,personal-reject,REJECT',
     'RULE-SET,personal-proxy,PROXY',
     'MATCH,DIRECT'
   ]);
