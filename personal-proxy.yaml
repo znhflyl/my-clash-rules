@@ -1,4 +1,5 @@
 payload:
+  - DOMAIN,humb.apple.com
   - DOMAIN,c.ha.zdz.plus
   - DOMAIN,challenges.cloudflare.com
   - DOMAIN,cdn.workos.com
