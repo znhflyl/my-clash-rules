@@ -1,0 +1,11 @@
+# Apple Account authentication and Xcode developer/signing services.
+# Must be referenced before broad apple.com DIRECT rules.
+payload:
+  - DOMAIN,idmsa.apple.com
+  - DOMAIN,gsa.apple.com
+  - DOMAIN,account.apple.com
+  - DOMAIN,appleid.apple.com
+  - DOMAIN,appleid.cdn-apple.com
+  - DOMAIN-SUFFIX,developer.apple.com
+  - DOMAIN,developerservices2.apple.com
+  - DOMAIN-SUFFIX,appstoreconnect.apple.com
