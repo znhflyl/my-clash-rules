@@ -23,3 +23,9 @@
 ## 当前部署记录
 
 2026-11-10：已补齐 GitHub App 对本仓库的安装授权，连接器创建及更新文件成功并已回读。Mac 的 Clash Verge 与 iPhone 的 Clash 均已验证从云端加载 personal-direct 8 条、personal-proxy 132 条。其他设备应分别核验，不能把云端提交成功视为全部设备已经生效。
+
+## Apple 登录与 Xcode 开发者服务
+
+2026-11-16：新增 `apple-developer-proxy.yaml`，覆盖 Apple 账号认证、Xcode 团队查询及签名服务的 8 条域名规则。`shared-rules.js` 已增加对应 provider，并将它置于设备本地的 `apple.com DIRECT` 等规则之前。普通 Apple/iCloud 分流继续沿用各设备原设置；认证服务为多个 Apple 产品共用，并非仅供 Xcode 使用。
+
+已接入旧脚本的设备需要更新桥接脚本才能引用这个新规则库，仅刷新原有 personal-proxy 不会加载它。Mac 已同步本地脚本、对应 DNS 策略和规则缓存，核实运行内核加载 8 条，开发者服务返回 HTTP 200。其他设备本次未修改。
