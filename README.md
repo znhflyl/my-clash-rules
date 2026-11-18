@@ -29,3 +29,9 @@
 2026-11-16：新增 `apple-developer-proxy.yaml`，覆盖 Apple 账号认证、Xcode 团队查询及签名服务的 8 条域名规则。`shared-rules.js` 已增加对应 provider，并将它置于设备本地的 `apple.com DIRECT` 等规则之前。普通 Apple/iCloud 分流继续沿用各设备原设置；认证服务为多个 Apple 产品共用，并非仅供 Xcode 使用。
 
 已接入旧脚本的设备需要更新桥接脚本才能引用这个新规则库，仅刷新原有 personal-proxy 不会加载它。Mac 已同步本地脚本、对应 DNS 策略和规则缓存，核实运行内核加载 8 条，开发者服务返回 HTTP 200。其他设备本次未修改。
+
+## Claude 规则模式修复（2026-11-18）
+
+新增 `claude-proxy.yaml`，覆盖 Claude、Anthropic 的站点、登录/API 与相关子域名。共享脚本在设备原有 DIRECT / REJECT 规则之前优先应用 `RULE-SET,claude-proxy,PROXY`，以免设备本地较宽泛的直连规则覆盖 Claude。保留原 `personal-proxy.yaml` 内的 Claude 条目，兼容尚未升级脚本的设备。
+
+**客户端操作：** 已接入旧版 `shared-rules.js` 的设备需要重新加载/应用最新共享脚本，再更新外部规则库。仅刷新旧规则库不会自动增加新 provider。请在 Clash 连接日志中检查 `claude.ai`、`platform.claude.com`、`api.anthropic.com` 等域名实际命中 `claude-proxy → PROXY`；若依然显示地区受限，再核查节点出口所在地、DNS 与 IPv6 泄漏，以及是否存在规则前置、其他代理或客户端缓存。仓库改动本身不代表设备端已验证成功。
