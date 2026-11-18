@@ -1,6 +1,6 @@
 // Shared rule-provider bridge. Contains no nodes, subscriptions, or credentials.
 function main(config) {
-  var names = ['personal-direct', 'personal-proxy', 'personal-reject', 'apple-developer-proxy'];
+  var names = ['personal-direct', 'personal-proxy', 'personal-reject', 'apple-developer-proxy', 'claude-proxy'];
   var current = config.rules || [];
   var local = current.filter(function(rule) {
     var fields = rule.split(',');
@@ -16,8 +16,8 @@ function main(config) {
       interval: 3600, proxy: 'PROXY'
     };
   });
-  // Narrow Apple exceptions must precede device-local apple.com DIRECT.
-  config.rules = ['RULE-SET,apple-developer-proxy,PROXY'].concat(local, [
+  // Narrow Apple and Claude exceptions must precede device-local DIRECT rules.
+  config.rules = ['RULE-SET,apple-developer-proxy,PROXY', 'RULE-SET,claude-proxy,PROXY'].concat(local, [
     'RULE-SET,personal-direct,DIRECT',
     'RULE-SET,personal-reject,REJECT',
     'RULE-SET,personal-proxy,PROXY',
